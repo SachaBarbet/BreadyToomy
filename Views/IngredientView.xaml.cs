@@ -1,17 +1,8 @@
-﻿using System;
+﻿using BreadyToomy.Models;
+using BreadyToomy.Views.Windows;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 
 namespace BreadyToomy.Views
 {
@@ -20,9 +11,20 @@ namespace BreadyToomy.Views
     /// </summary>
     public partial class IngredientView : Page
     {
+        private List<Ingredient> ingredients;
         public IngredientView()
         {
             InitializeComponent();
+            ingredientsEntries.Items.Add(new Ingredient { Name = "Farine", Quantity = 500 });
+
+        }
+
+        private void Button_Click_Add(object sender, RoutedEventArgs e)
+        {
+            Window window = new IngredientWindow();
+            window.Owner = Application.Current.MainWindow;
+
+            window.ShowDialog();
         }
     }
 }

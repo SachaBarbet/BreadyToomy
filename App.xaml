@@ -2,11 +2,14 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:BreadyToomy"
-             StartupUri="Views/MainWindow.xaml">
+             StartupUri="MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="./Resources/ColorResources.xaml"/>
+                <ResourceDictionary Source="./Resources/ButtonResources.xaml"/>
+                <ResourceDictionary Source="./Resources/InputBoxResources.xaml"/>
+                <ResourceDictionary Source="./Resources/AssetResources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

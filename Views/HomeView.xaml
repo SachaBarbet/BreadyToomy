@@ -18,113 +18,28 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Margin="0 12 0 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <Image Source="../Assets/app-icon.png" Height="24" Margin="0 0 24 0"></Image>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Left" Margin="12 24 0 0">
+            <Image Source="../Assets/app-icon.png" Height="48"></Image>
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="2" Margin="0 30 0 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock FontSize="24" FontWeight="Bold" TextAlignment="Center" FontFamily="Roboto" Text="ACCUEIL"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="navigateToOrder" Content="COMMANDES" Click="Navigate_To_Order" FontWeight="Bold">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Background" Value="{StaticResource BlackColorBrush}"/>
-                        <Setter Property="Foreground" Value="{StaticResource WhiteColorBruh}"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BlackColorBrush}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="192" Height="48" CornerRadius="12" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToOrder" Content="COMMANDES" Click="Navigate_To_Order" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="navigateToProduct" Content="PRODUITS" Click="Navigate_To_Product" FontWeight="Bold">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Background" Value="{StaticResource BlackColorBrush}"/>
-                        <Setter Property="Foreground" Value="{StaticResource WhiteColorBruh}"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BlackColorBrush}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="192" Height="48" CornerRadius="12" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToProduct" Content="PRODUITS" Click="Navigate_To_Product" FontWeight="Bold" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="navigateToIngredient" Content="INGREDIENTS" Click="Navigate_To_Ingredient" FontWeight="Bold">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Background" Value="{StaticResource BlackColorBrush}"/>
-                        <Setter Property="Foreground" Value="{StaticResource WhiteColorBruh}"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BlackColorBrush}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="192" Height="48" CornerRadius="12" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToIngredient" Content="INGREDIENTS" Click="Navigate_To_Ingredient" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button x:Name="navigateToRecipe" Content="RECETTES" Click="Navigate_To_Recipe" FontWeight="Bold">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Background" Value="{StaticResource BlackColorBrush}"/>
-                        <Setter Property="Foreground" Value="{StaticResource WhiteColorBruh}"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BlackColorBrush}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
-
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="192" Height="48" CornerRadius="12" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToRecipe" Content="RECETTES" Click="Navigate_To_Recipe" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Page>
