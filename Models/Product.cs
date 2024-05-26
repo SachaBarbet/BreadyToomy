@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using BreadyToomy.Enums;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
 namespace BreadyToomy.Models
@@ -8,8 +9,7 @@ namespace BreadyToomy.Models
         private int _id;
         private string _name;
         private string _description;
-        private ProductType _type;
-        private Recipe _recipe;
+        private ProductTypes _type;
         private decimal _price;
         private bool _archived;
 
@@ -33,17 +33,7 @@ namespace BreadyToomy.Models
             }
         }
 
-        public Recipe Recipe
-        {
-            get => _recipe;
-            set
-            {
-                _recipe = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ProductType Type
+        public ProductTypes Type
         {
             get => _type;
             set
@@ -89,14 +79,6 @@ namespace BreadyToomy.Models
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
-    }
-
-    public enum ProductType
-    {
-        Food,
-        Drinks,
-        Snacks
-
     }
 }
 

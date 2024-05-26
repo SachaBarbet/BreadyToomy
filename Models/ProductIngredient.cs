@@ -10,8 +10,6 @@ namespace BreadyToomy.Models
         private int _quantity;
         private bool _archived;
 
-
-
         public int ProductId
         {
             get => _productId;

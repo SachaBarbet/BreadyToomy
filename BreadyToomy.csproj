@@ -35,6 +35,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
@@ -147,7 +153,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Enums\ProductType.cs" />
+    <Compile Include="Enums\OrderTypes.cs" />
+    <Compile Include="Enums\OrderStates.cs" />
+    <Compile Include="Enums\RecipeDifficulties.cs" />
+    <Compile Include="Enums\ProductTypes.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderProduct.cs" />
@@ -155,13 +164,9 @@
     <Compile Include="Models\ProductIngredient.cs" />
     <Compile Include="Models\Recipe.cs" />
     <Compile Include="Models\RecipeStep.cs" />
-    <Compile Include="postgresDataSet.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>postgresDataSet.xsd</DependentUpon>
-    </Compile>
     <Compile Include="RelayCommand.cs" />
     <Compile Include="Services\Database.cs" />
+    <Compile Include="Services\DatabaseContext.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
     <Compile Include="ViewModels\OrderViewModel.cs" />
     <Compile Include="ViewModels\ProductViewModel.cs" />
@@ -285,17 +290,6 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="packages.config" />
-    <None Include="postgresDataSet.xsc">
-      <DependentUpon>postgresDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="postgresDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>postgresDataSet.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="postgresDataSet.xss">
-      <DependentUpon>postgresDataSet.xsd</DependentUpon>
-    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -307,6 +301,9 @@
   <ItemGroup>
     <Content Include=".gitignore" />
     <Resource Include="Assets\app-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

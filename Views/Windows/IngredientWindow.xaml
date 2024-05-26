@@ -14,6 +14,7 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -22,16 +23,18 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0 8 12 0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Name="inputName" Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity:" Margin="0 8 12 0"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Name="inputQuantity" Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                  Template="{StaticResource TextBoxBaseControlTemplate}"/>
-            
-            <CheckBox Grid.Row="2" Grid.ColumnSpan="2" Margin="0 8 0 24" Height="25" IsChecked="{Binding Archived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Archived</CheckBox>
 
-            <Button Style="{StaticResource ButtonStyle}" Height="32" Content="CONFIRM" Grid.Row="3" Grid.ColumnSpan="2" Width="192" Command="{Binding AddCommand}"/>
+            <CheckBox Name="inputArchived" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 8 0 0" Height="25" IsChecked="{Binding Archived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Archived</CheckBox>
+
+            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ErrorString}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"/>
+
+            <Button Style="{StaticResource ButtonStyle}" Margin="0 24 0 0" Height="32" Content="CONFIRM" Grid.Row="4" Grid.ColumnSpan="2" Width="192" Command="{Binding AddCommand}"/>
         </Grid>
     </Grid>
 </Window>

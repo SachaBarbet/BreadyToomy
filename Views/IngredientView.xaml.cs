@@ -28,12 +28,7 @@ namespace BreadyToomy.Views
         {
             IngredientWindow window = new IngredientWindow(ingredientViewModel: _ingredientViewModel);
             window.Owner = Application.Current.MainWindow;
-            window.OnApplyTemplate();
             window.Show();
-        }
-
-        private void Button_Click_Edit(object sender, RoutedEventArgs e)
-        {
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
