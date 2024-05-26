@@ -5,7 +5,6 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:BreadyToomy.Views"
       xmlns:userControls="clr-namespace:BreadyToomy.Views.UserControls"
-      
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
       Title="OrderView" Background="{StaticResource WhiteColorBruh}">
@@ -21,37 +20,39 @@
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <userControls:BackButtonUserControl />
+        <userControls:BackButtonUserControl Grid.Row="0" Grid.Column="0"/>
 
-        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="0 12 0 0 " Text="Orders" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" Margin="0 12 0 0" Text="Orders" FontWeight="Bold" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center"/>
 
-        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 12 12 0">
-            <Button Content="Add" Click="Button_Click_Add" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Height="28" Width="92"/>
+        <StackPanel Grid.Column="1" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0 12 12 0" Orientation="Horizontal">
+            <Button Content="Add" Click="Button_Click_Add" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Height="28" Width="92" Margin="0 0 12 0"/>
+            <Button Content="Save" Command="{Binding SaveCommand}" FontWeight="Bold" Style="{StaticResource ButtonStyle}" Height="28" Width="92"/>
         </StackPanel>
 
-        <ListView Name="ingredientsEntries" Margin="12" Grid.Row="2" Grid.ColumnSpan="2">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding Id}" Width="50"/>
-                    <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}" Width="200"/>
-                    <GridViewColumn Header="Quantity" DisplayMemberBinding="{Binding Quantity}" Width="75"/>
-                    <GridViewColumn Header="Archived" DisplayMemberBinding="{Binding Archived}" Width="75"/>
-                    <GridViewColumn Header="Actions" Width="283">
-                        <GridViewColumn.CellTemplate>
-                            <DataTemplate>
-                                <Grid Width="Auto" HorizontalAlignment="Center" VerticalAlignment="Center">
-                                    <Grid.ColumnDefinitions>
-                                        <ColumnDefinition Width="132"/>
-                                        <ColumnDefinition Width="132"/>
-                                    </Grid.ColumnDefinitions>
-                                    <Button Content="Edit" Margin="0 0 12 0" Style="{StaticResource ButtonStyle}" Height="24" Width="92"/>
-                                    <Button Grid.Column="1" Margin="0 0 12 0" Content="Delete" Style="{StaticResource ButtonStyle}" Height="24" Width="92"/>
-                                </Grid>
-                            </DataTemplate>
-                        </GridViewColumn.CellTemplate>
-                    </GridViewColumn>
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <DataGrid Grid.Row="2" Grid.Column="1" ItemsSource="{Binding Items}"
+                  SelectedItem="{Binding SelectedItem}"
+                  CanUserAddRows="False" CanUserDeleteRows="False" Margin="0 12 12 12"
+                  AutoGenerateColumns="False"
+                  CanUserReorderColumns="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="2*" IsReadOnly="True" SortDirection="Ascending"></DataGridTextColumn>
+                <DataGridTextColumn Header="Number" Binding="{Binding Number}" Width="4*" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="State" Binding="{Binding State}" Width="4*" IsReadOnly="True"></DataGridTextColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">
+                <TextBlock Text="Selected Order" FontWeight="Bold" VerticalAlignment="Center" Margin="0 0 4 0"></TextBlock>
+                <TextBlock Text="{Binding SelectedItem.Id}" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
+            </StackPanel>
+            <Label Content="Number"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.Number, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
+            <Label Content="Type"/>
+            <ComboBox ItemsSource="{Binding TypeList}" SelectedItem="{Binding SelectedItem.Type}" Width="160" Margin="12 0 12 0"/>
+            <Label Content="State"/>
+            <ComboBox ItemsSource="{Binding StateList}" SelectedItem="{Binding SelectedItem.State}" Width="160" Margin="12 0 12 0"/>
+        </StackPanel>
     </Grid>
 </Page>
