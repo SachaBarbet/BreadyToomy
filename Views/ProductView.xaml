@@ -1,5 +1,6 @@
 ﻿<Page x:Class="BreadyToomy.Views.ProductView"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:enums="clr-namespace:BreadyToomy.Enums"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -52,7 +53,7 @@
             <Label Content="Name"/>
             <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.Name, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
             <Label Content="Type"/>
-            <ComboBox ItemsSource="{Binding TypeList}" SelectedItem="{Binding SelectedItem.Type}" Width="160" Margin="12 0 12 0"/>
+           <ComboBox ItemsSource="{Binding ProductTypeList}" SelectedItem="{Binding SelectedProductType}" Width="160" Margin="12 0 12 0"/>
             <Label Content="Description"/>
             <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.Description, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
             <Label Content="Price"/>

@@ -1,20 +1,26 @@
 ﻿using BreadyToomy.Views.Windows;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
-using System.Windows.Navigation;
 
 namespace BreadyToomy.Views
 {
     /// <summary>
-    /// Logique d'interaction pour ProductView.xaml
+    /// Interaction logic for ProductView.xaml
     /// </summary>
     public partial class ProductView : Page
     {
+        private ProductViewModel _viewModel;
+
         public ProductView()
         {
             InitializeComponent();
+            _viewModel = new ProductViewModel(); 
+            DataContext = _viewModel;
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
