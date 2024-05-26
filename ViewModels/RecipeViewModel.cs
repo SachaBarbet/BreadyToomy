@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BreadyToomy.ViewModels
 {
-    internal class RecipeViewModel
+    internal class RecipeViewModel : BaseViewModel
     {
     }
 }

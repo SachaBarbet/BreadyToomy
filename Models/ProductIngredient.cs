@@ -3,10 +3,10 @@ using System.Runtime.CompilerServices;
 
 namespace BreadyToomy.Models
 {
-    public class ProductFood : INotifyPropertyChanged
+    public class ProductIngredient : INotifyPropertyChanged
     {
         private int _productId;
-        private int _foodId;
+        private int _ingredientId;
         private int _quantity;
         private bool _archived;
 
@@ -22,12 +22,12 @@ namespace BreadyToomy.Models
             }
         }
 
-        public int FoodId
+        public int IngredientId
         {
-            get => _foodId;
+            get => _ingredientId;
             set
             {
-                _foodId = value;
+                _ingredientId = value;
                 OnPropertyChanged();
             }
         }

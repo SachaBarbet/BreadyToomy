@@ -1,8 +1,12 @@
 ﻿using BreadyToomy.Models;
+using BreadyToomy.ViewModels;
 using BreadyToomy.Views.Windows;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Input;
+using System.Windows.Navigation;
 
 namespace BreadyToomy.Views
 {
@@ -11,20 +15,31 @@ namespace BreadyToomy.Views
     /// </summary>
     public partial class IngredientView : Page
     {
-        private List<Ingredient> ingredients;
+
+        private IngredientViewModel _ingredientViewModel;
         public IngredientView()
         {
             InitializeComponent();
-            ingredientsEntries.Items.Add(new Ingredient { Name = "Farine", Quantity = 500 });
-
+            _ingredientViewModel = new IngredientViewModel();
+            DataContext = _ingredientViewModel;
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
-            Window window = new IngredientWindow();
+            IngredientWindow window = new IngredientWindow(ingredientViewModel: _ingredientViewModel);
             window.Owner = Application.Current.MainWindow;
+            window.OnApplyTemplate();
+            window.Show();
+        }
 
-            window.ShowDialog();
+        private void Button_Click_Edit(object sender, RoutedEventArgs e)
+        {
+        }
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {
+            Regex regex = new Regex("[^0-9]+");
+            e.Handled = regex.IsMatch(e.Text);
         }
     }
 }

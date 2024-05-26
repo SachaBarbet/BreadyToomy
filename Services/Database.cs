@@ -1,14 +1,17 @@
-﻿using System.Data.SqlClient;
+﻿using Npgsql;
 
 namespace BreadyToomys.Services
 {
-    internal class Database
+    public class Database
     {
-        SqlConnection connection;
-        const string connectionString = "Server=LAPTOP-E1TB3H3Q\\SQLEXPRESS02;Database=bready_tommys;Trusted_Connection=True;";
+        NpgsqlConnection connection;
+        const string connectionString = "Host=localhost;Username=postgres;Password=12345;Database=postgres";
+
+        // Singleton
         private Database()
         {
-            connection = new SqlConnection(connectionString);
+            connection = new NpgsqlConnection(connectionString);
+            connection.Open();
         }
 
         private static Database instance;
@@ -24,19 +27,17 @@ namespace BreadyToomys.Services
             }
         }
 
-        public SqlCommand query(string query)
+        public NpgsqlCommand query(string query)
         {
-            connection.Open();
-            SqlCommand command = new SqlCommand(query, connection);
-            connection.Close();
+            NpgsqlCommand command = new NpgsqlCommand(query, connection);
             return command;
         }
 
-        public SqlCommand queryWithValues(string query, object[] values)
+        public NpgsqlCommand queryWithValues(string query, object[] values)
         {
             connection.Open();
 
-            SqlCommand command = new SqlCommand(query, connection);
+            NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
             for (int i = 0; i < values.Length; i++)
             {
@@ -44,9 +45,12 @@ namespace BreadyToomys.Services
             }
 
             command.ExecuteNonQuery();
-
-            connection.Close();
             return command;
+        }
+
+        public void close()
+        {
+            connection.Close();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using BreadyToomys.Services;
+using System.Windows;
 
 namespace BreadyToomy
 {
@@ -15,6 +16,12 @@ namespace BreadyToomy
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             mainFrame.NavigationService.Navigate(new Views.HomeView());
+        }
+
+        private void Window_Closed(object sender, System.EventArgs e)
+        {
+            Database database = Database.GetInstance();
+            database.close();
         }
     }
 }

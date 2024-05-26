@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BreadyToomy.Views.Windows"
         mc:Ignorable="d"
-        Title="Ingredient" Background="{StaticResource WhiteColorBruh}" Width="256" Height="312" Icon="../../Assets/app-icon.png" WindowStartupLocation="CenterOwner">
+        Title="Add Ingredient" Background="{StaticResource WhiteColorBruh}" Width="256" Height="312" Icon="../../Assets/app-icon.png" WindowStartupLocation="CenterOwner">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">
-        <TextBlock Text="Ingredient" FontSize="24" TextAlignment="Center" FontWeight="Bold" ></TextBlock>
+        <TextBlock Text="Add Ingredient" FontSize="24" TextAlignment="Center" FontWeight="Bold" ></TextBlock>
         <Grid Margin="0 64 0 0">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
@@ -21,17 +21,17 @@
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
 
-            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0 4 12 0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Height="25" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0 8 12 0"/>
+            <TextBox Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity:" Margin="0 4 12 0"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Height="25" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity:" Margin="0 8 12 0"/>
+            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                  Template="{StaticResource TextBoxBaseControlTemplate}"/>
             
             <CheckBox Grid.Row="2" Grid.ColumnSpan="2" Margin="0 8 0 24" Height="25" IsChecked="{Binding Archived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Archived</CheckBox>
 
-            <Button Style="{StaticResource ButtonStyle}" Height="32" Content="CONFIRM" Grid.Row="3" Grid.ColumnSpan="2" Width="192" Click="Button_Click"/>
+            <Button Style="{StaticResource ButtonStyle}" Height="32" Content="CONFIRM" Grid.Row="3" Grid.ColumnSpan="2" Width="192" Command="{Binding AddCommand}"/>
         </Grid>
     </Grid>
 </Window>

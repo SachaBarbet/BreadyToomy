@@ -1,5 +1,4 @@
-﻿using BreadyToomy.ViewModels;
-using System.Text.RegularExpressions;
+﻿using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Input;
 
@@ -8,22 +7,23 @@ namespace BreadyToomy.Views.Windows
     /// <summary>
     /// Logique d'interaction pour IngredientControl.xaml
     /// </summary>
-    public partial class IngredientWindow : Window
+    public partial class RecipeWindow : Window
     {
-        private IngredientViewModel IngredientViewModel;
-      
-
-        public IngredientWindow(IngredientViewModel ingredientViewModel)
+        public RecipeWindow()
         {
             InitializeComponent();
-            IngredientViewModel = ingredientViewModel;
-            DataContext = IngredientViewModel;
         }
 
         private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
         {
             Regex regex = new Regex("[^0-9]+");
             e.Handled = regex.IsMatch(e.Text);
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            // Add ingredient to bdd
+            this.Close();
         }
     }
 }
