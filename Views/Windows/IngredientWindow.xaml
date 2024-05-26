@@ -23,18 +23,16 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0 8 12 0"/>
-            <TextBox Name="inputName" Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Name="inputName" Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Ingredient.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
 
             <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity:" Margin="0 8 12 0"/>
-            <TextBox Name="inputQuantity" Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Name="inputQuantity" Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Ingredient.Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                  Template="{StaticResource TextBoxBaseControlTemplate}"/>
 
-            <CheckBox Name="inputArchived" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 8 0 0" Height="25" IsChecked="{Binding Archived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Archived</CheckBox>
+            <TextBlock Name="errorString" Grid.Row="3" Grid.ColumnSpan="2" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"/>
 
-            <TextBlock Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding ErrorString}" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"/>
-
-            <Button Style="{StaticResource ButtonStyle}" Margin="0 24 0 0" Height="32" Content="CONFIRM" Grid.Row="4" Grid.ColumnSpan="2" Width="192" Command="{Binding AddCommand}"/>
+            <Button Style="{StaticResource ButtonStyle}" Margin="0 24 0 0" Height="32" Content="CONFIRM" Grid.Row="4" Grid.ColumnSpan="2" Width="192" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>

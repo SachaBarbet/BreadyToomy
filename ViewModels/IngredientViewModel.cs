@@ -14,7 +14,8 @@ namespace BreadyToomy.ViewModels
         private HashSet<Ingredient> _editedIngredients = new HashSet<Ingredient>();
         private Collection<Ingredient> _addedIngredients = new Collection<Ingredient>();
 
-        public RelayCommand SaveCommand => new RelayCommand(execute => SaveItem(), canExecute => CanSave()); // Unlock le bouton save si une modification est apporté (canExecute)
+        public RelayCommand SaveIngredientCommand => new RelayCommand(execute => SaveItem(), canExecute => CanSave()); // Unlock le bouton save si une modification est apporté (canExecute)
+        public RelayCommand ReloadIngredientCommand => new RelayCommand(execute => RefreshItems(), canExecute => true); // Unlock le bouton save si une modification est apporté (canExecute)
 
         public IngredientViewModel()
         {
@@ -84,10 +85,8 @@ namespace BreadyToomy.ViewModels
             }
         }
 
-        internal void AddItem()
+        internal void AddItem(Ingredient item)
         {
-
-
             Items.Add(item);
             _addedIngredients.Add(item);
         }
