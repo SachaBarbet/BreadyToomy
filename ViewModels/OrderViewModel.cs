@@ -1,6 +1,7 @@
 
 ﻿using BreadyToomy.Models;
 using BreadyToomy.Services;
+using BreadyToomys.Services;
 using Npgsql;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -56,7 +57,7 @@ namespace BreadyToomy.ViewModels
             Items.Clear();
             _editedOrders.Clear();
             _addedOrders.Clear();
-            NpgsqlDataReader result = database.query("SELECT id, number, type, state FROM \"order\"").ExecuteReader();
+            NpgsqlDataReader result = database.query("SELECT id, number, type, state FROM \"Order\"").ExecuteReader();
             while (result.Read())
             {
                 Items.Add(new Order
@@ -74,7 +75,7 @@ namespace BreadyToomy.ViewModels
         {
             Database database = Database.GetInstance();
             OrderNumbers.Clear();
-            NpgsqlDataReader result = database.query("SELECT number FROM \"order\"").ExecuteReader();
+            NpgsqlDataReader result = database.query("SELECT number FROM \"Order\"").ExecuteReader();
             while (result.Read())
             {
                 OrderNumbers.Add(result.GetInt32(0));
@@ -94,7 +95,7 @@ namespace BreadyToomy.ViewModels
                 foreach (Order item in _editedOrders)
                 {
                     Database db = Database.GetInstance();
-                    db.queryWithValues("UPDATE \"order\" SET number = @0, type = @1, state = @2 WHERE id = @3", new object[] { item.Number, item.Type, item.State, item.Id });
+                    db.queryWithValues("UPDATE \"Order\" SET number = @0, type = @1, state = @2 WHERE id = @3", new object[] { item.Number, item.Type, item.State, item.Id });
                     db.close();
                 }
             }
@@ -104,7 +105,7 @@ namespace BreadyToomy.ViewModels
                 foreach (Order item in _addedOrders)
                 {
                     Database db = Database.GetInstance();
-                    db.queryWithValues("INSERT INTO \"order\" (number, type, state) VALUES (@0, @1, @2)", new object[] { item.Number, item.Type, item.State });
+                    db.queryWithValues("INSERT INTO \"Order\" (number, type, state) VALUES (@0, @1, @2)", new object[] { item.Number, item.Type, item.State });
                     db.close();
                 }
             }
