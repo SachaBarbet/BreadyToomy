@@ -1,4 +1,5 @@
-﻿using BreadyToomy.Views.Windows;
+﻿using BreadyToomy.ViewModels;
+using BreadyToomy.Views.Windows;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;
@@ -11,9 +12,13 @@ namespace BreadyToomy.Views
     /// </summary>
     public partial class RecipeView : Page
     {
+
+        private RecipeViewModel _viewModel;
         public RecipeView()
         {
             InitializeComponent();
+            _viewModel = new RecipeViewModel();
+            DataContext = _viewModel;
         }
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
