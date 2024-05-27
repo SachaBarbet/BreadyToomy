@@ -11,9 +11,6 @@ namespace BreadyToomy.Models
         private string _stepDetails;
         private bool _archived;
 
-
-
-
         public int Id
         {
             get => _id;

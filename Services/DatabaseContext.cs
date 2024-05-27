@@ -1,5 +1,4 @@
-﻿using BreadyToomy.Enums;
-using BreadyToomy.Models;
+﻿using BreadyToomy.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace BreadyToomy.Services
@@ -33,9 +32,9 @@ namespace BreadyToomy.Services
         {
             // Insert sample data into Recipe table
             Recipes.AddRange(
-                new Recipe { Difficulty = RecipeDifficulties.EASY, CookTime = 15, Archived = false },
-                new Recipe { Difficulty = RecipeDifficulties.MEDIUM, CookTime = 30, Archived = false },
-                new Recipe { Difficulty = RecipeDifficulties.HARD, CookTime = 45, Archived = false }
+                new Recipe { Difficulty = "EASY", CookTime = 15, Archived = false },
+                new Recipe { Difficulty = "MEDIUM", CookTime = 30, Archived = false },
+                new Recipe { Difficulty = "HARD", CookTime = 45, Archived = false }
             );
 
             // Insert sample data into RecipeStep table
@@ -50,9 +49,9 @@ namespace BreadyToomy.Services
 
             // Insert sample data into Product table
             Products.AddRange(
-                new Product { Name = "Spaghetti", Type = ProductTypes.MEAL, Description = "Delicious spaghetti with tomato sauce", Price = 10, Archived = false },
-                new Product { Name = "Salad", Type = ProductTypes.MEAL, Description = "Fresh garden salad", Price = 7, Archived = false },
-                new Product { Name = "Cake", Type = ProductTypes.DESSERT, Description = "Chocolate cake", Price = 15, Archived = false }
+                new Product { Name = "Spaghetti", Type = "MEAL", Description = "Delicious spaghetti with tomato sauce", Price = 10, Archived = false },
+                new Product { Name = "Salad", Type = "MEAL", Description = "Fresh garden salad", Price = 7, Archived = false },
+                new Product { Name = "Cake", Type = "DESSERT", Description = "Chocolate cake", Price = 15, Archived = false }
             );
 
             // Insert sample data into Ingredient table
@@ -77,9 +76,9 @@ namespace BreadyToomy.Services
 
             // Insert sample data into Order table
             Orders.AddRange(
-                new Order { Number = 1001, Type = OrderTypes.ON_SITE, State = OrderStates.ON_GOING },
-                new Order { Number = 1002, Type = OrderTypes.DELIVERY, State = OrderStates.DONE },
-                new Order { Number = 1003, Type = OrderTypes.CLICK_AND_COLLECT, State = OrderStates.SENT }
+                new Order { Number = 1001, Type = "ON_SITE", State = "ON_GOING" },
+                new Order { Number = 1002, Type = "DELIVERY", State = "DONE" },
+                new Order { Number = 1003, Type = "CLICK_AND_COLLECT", State = "SENT" }
             );
 
             // Insert sample data into OrderProduct table

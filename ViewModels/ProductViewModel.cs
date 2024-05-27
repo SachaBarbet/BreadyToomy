@@ -2,16 +2,19 @@
 using BreadyToomys.Services;
 using Npgsql;
 using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace BreadyToomy.ViewModels
 {
     public class ProductViewModel : BaseViewModel
     {
-        public ObservableCollection<Ingredient> Items { get; set; } = new ObservableCollection<Ingredient>();
-        private Collection<Ingredient> _deletedIngredients = new Collection<Ingredient>();
-        private Collection<Ingredient> _editedIngredients = new Collection<Ingredient>();
-        private Collection<Ingredient> _addedIngredients = new Collection<Ingredient>();
+        public ObservableCollection<Product> Items { get; set; } = new ObservableCollection<Product>();
+        private HashSet<Product> _editedProducts = new HashSet<Product>();
+        private Collection<Product> _addedProducts = new Collection<Product>();
+
+        public string[] ProductTypeList = new string[] { "MEAL", "DESSERT", "DRINK", "MENU" }; // Liste des types de produits pour le combobox dans la vue
+        public string ComboBoxSelectedValue { get; set; } // Valeur sélectionnée dans le combobox
 
         public RelayCommand DeleteCommand => new RelayCommand(execute => DeleteItem(), canExecute => SelectedItem != null); // Unlock le bouton delete si un item est sélectionné (canExecute)
         public RelayCommand SaveCommand => new RelayCommand(execute => SaveItem(), canExecute => CanSave()); // Unlock le bouton save si une modification est apporté (canExecute)
@@ -21,15 +24,15 @@ namespace BreadyToomy.ViewModels
             RefreshItems();
         }
 
-        private Ingredient _selectedItem;
+        private Product _selectedItem;
 
-        public Ingredient SelectedItem
+        public Product SelectedItem
         {
             get => _selectedItem;
             set
             {
                 _selectedItem = value;
-                _editedIngredients.Add(value);
+                _editedProducts.Add(value);
                 OnPropertyChanged();
             }
         }
@@ -38,18 +41,19 @@ namespace BreadyToomy.ViewModels
         {
             Database database = Database.GetInstance();
             Items.Clear();
-            _editedIngredients.Clear();
-            _deletedIngredients.Clear();
-            _addedIngredients.Clear();
-            NpgsqlDataReader result = database.query("SELECT id, name, quantity, archived FROM ingredient").ExecuteReader();
+            _editedProducts.Clear();
+            _addedProducts.Clear();
+            NpgsqlDataReader result = database.query("SELECT id, name, description, type, price, archived FROM product").ExecuteReader();
             while (result.Read())
             {
-                Items.Add(new Ingredient
+                Items.Add(new Product
                 {
                     Id = result.GetInt32(0),
                     Name = result.GetString(1),
-                    Quantity = result.GetInt32(2),
-                    Archived = result.GetBoolean(3),
+                    Description = result.GetString(2),
+                    Type = result.GetString(3),
+                    Price = result.GetDecimal(4),
+                    Archived = result.GetBoolean(5),
                 });
             }
             database.close();
@@ -62,29 +66,22 @@ namespace BreadyToomy.ViewModels
 
         private bool CanSave()
         {
-            return _editedIngredients.Count > 0 || _deletedIngredients.Count > 0 || _addedIngredients.Count > 0;
+            return _editedProducts.Count > 0 || _addedProducts.Count > 0;
         }
 
         private void SaveItem()
         {
-            foreach (Ingredient item in _deletedIngredients)
+            foreach (Product item in _editedProducts)
             {
                 Database db = Database.GetInstance();
-                db.queryWithValues("DELETE FROM ingredient WHERE id = @0", new object[] { item.Id });
+                db.queryWithValues("UPDATE product SET name = @0, description = @1, type = @2, price = @3, archived = @4 WHERE id = @5", new object[] { item.Name, item.Description, item.Type, item.Price, item.Archived, item.Id });
                 db.close();
             }
 
-            foreach (Ingredient item in _editedIngredients)
+            foreach (Product item in _addedProducts)
             {
                 Database db = Database.GetInstance();
-                db.queryWithValues("UPDATE ingredient SET name = @0, quantity = @1, archived = @2 WHERE id = @3", new object[] { item.Name, item.Quantity, item.Archived, item.Id });
-                db.close();
-            }
-
-            foreach (Ingredient item in _addedIngredients)
-            {
-                Database db = Database.GetInstance();
-                db.queryWithValues("INSERT INTO ingredient (name, quantity, archived) VALUES (@0, @1, @2)", new object[] { item.Name, item.Quantity, item.Archived });
+                db.queryWithValues("INSERT INTO product (name, description, type, price, archived) VALUES (@0, @1, @2, @3, @4)", new object[] { item.Name, item.Description, item.Type, item.Price, item.Archived });
                 db.close();
             }
         }

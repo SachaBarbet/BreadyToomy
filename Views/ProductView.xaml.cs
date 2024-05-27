@@ -1,7 +1,5 @@
-﻿using BreadyToomy.Views.Windows;
-using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using BreadyToomy.ViewModels;
+using BreadyToomy.Views.Windows;
 using System.Text.RegularExpressions;
 using System.Windows;
 using System.Windows.Controls;

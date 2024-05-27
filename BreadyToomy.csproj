@@ -153,10 +153,6 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Enums\OrderTypes.cs" />
-    <Compile Include="Enums\OrderStates.cs" />
-    <Compile Include="Enums\RecipeDifficulties.cs" />
-    <Compile Include="Enums\ProductTypes.cs" />
     <Compile Include="Models\Ingredient.cs" />
     <Compile Include="Models\Order.cs" />
     <Compile Include="Models\OrderProduct.cs" />
