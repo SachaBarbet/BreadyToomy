@@ -38,7 +38,7 @@
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" Width="2*" IsReadOnly="True" SortDirection="Ascending"></DataGridTextColumn>
                 <DataGridTextColumn Header="Number" Binding="{Binding Number}" Width="4*" IsReadOnly="True"></DataGridTextColumn>
                 <DataGridTextColumn Header="Type" Binding="{Binding Type}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
-                <DataGridTextColumn Header="State" Binding="{Binding State}" Width="4*" IsReadOnly="True"></DataGridTextColumn>
+                <DataGridTextColumn Header="State" Binding="{Binding State}" Width="2*" IsReadOnly="True"></DataGridTextColumn>
             </DataGrid.Columns>
         </DataGrid>
 
@@ -47,12 +47,12 @@
                 <TextBlock Text="Selected Order" FontWeight="Bold" VerticalAlignment="Center" Margin="0 0 4 0"></TextBlock>
                 <TextBlock Text="{Binding SelectedItem.Id}" FontWeight="Bold" VerticalAlignment="Center"></TextBlock>
             </StackPanel>
-            <Label Content="Number"/>
-            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.Number, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
+            <Label Content="Order Number"/>
+            <ComboBox ItemsSource="{Binding OrderNumbers}" SelectedItem="{Binding SelectedOrderNumber}" Width="160" Margin="12 0 12 0"/>
             <Label Content="Type"/>
-            <ComboBox ItemsSource="{Binding TypeList}" SelectedItem="{Binding SelectedItem.Type}" Width="160" Margin="12 0 12 0"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.Type, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
             <Label Content="State"/>
-            <ComboBox ItemsSource="{Binding StateList}" SelectedItem="{Binding SelectedItem.State}" Width="160" Margin="12 0 12 0"/>
+            <TextBox Template="{StaticResource TextBoxBaseControlTemplate}" Text="{Binding SelectedItem.State, UpdateSourceTrigger=PropertyChanged}" Width="160" Margin="12 0 12 0"/>
         </StackPanel>
     </Grid>
 </Page>
