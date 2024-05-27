@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace BreadyToomy.ViewModels
+﻿namespace BreadyToomy.ViewModels
 {
-    internal class OrderViewModel : BaseViewModel
+    public class OrderViewModel : BaseViewModel
     {
     }
 }

@@ -25,6 +25,15 @@ Connection parameters:
 - User: postgres
 - Password: 12345 (same as POSTGRES_PASSWORD in the docker command)
 
+## Add data to database
+
+Download the sql file [here](https://drive.proton.me/urls/7EKQ0KNAKM#CX6ckiVk9sfY)
+
+```bash
+docker exec -it postgredb psql -U postgres -c "CREATE DATABASE postgres;"
+cat postgres_bdd.sql | docker exec -i postgredb psql -U postgres -d postgredb
+```
+
 ## Authors
 - [@SachaBarbet](https://github.com/SachaBarbet/)
 - [@SajedehAdelia](https://github.com/SajedehAdelia)
