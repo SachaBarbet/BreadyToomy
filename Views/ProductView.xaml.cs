@@ -23,7 +23,7 @@ namespace BreadyToomy.Views
 
         private void Button_Click_Add(object sender, RoutedEventArgs e)
         {
-            ProductWindow window = new ProductWindow();
+            ProductWindow window = new ProductWindow(_viewModel);
             window.Owner = Application.Current.MainWindow;
 
             window.ShowDialog();

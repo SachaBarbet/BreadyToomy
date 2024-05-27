@@ -86,9 +86,10 @@ namespace BreadyToomy.ViewModels
             }
         }
 
-        internal void AddItem()
+        internal void AddItem(Product item)
         {
-            throw new NotImplementedException();
+            _addedProducts.Add(item);
+            Items.Add(item);
         }
     }
 }

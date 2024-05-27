@@ -5,11 +5,13 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BreadyToomy.Views.Windows"
         mc:Ignorable="d"
-        Title="Product" Background="{StaticResource WhiteColorBruh}" Width="256" Height="292" Icon="../../Assets/app-icon.png" WindowStartupLocation="CenterOwner">
+        Title="Product" Background="{StaticResource WhiteColorBruh}" Width="256" Height="360" Icon="../../Assets/app-icon.png" WindowStartupLocation="CenterOwner">
     <Grid VerticalAlignment="Center" HorizontalAlignment="Center" Margin="12">
         <TextBlock Text="Product" FontSize="24" TextAlignment="Center" FontWeight="Bold" ></TextBlock>
         <Grid Margin="0 48 0 0">
             <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -22,38 +24,24 @@
             </Grid.ColumnDefinitions>
 
             <TextBlock Grid.Row="0" Grid.Column="0" Text="Name:" Margin="0 4 12 0"/>
-            <TextBox Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Height="25" Text="{Binding Quantity, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+            <TextBox Name="inputName" Grid.Row="0" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Product.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
                      Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
 
-            <TextBlock Grid.Row="1" Grid.Column="0" Text="Quantity:" Margin="0 4 12 0"/>
-            <TextBox Grid.Row="1" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Height="25" Text="{Binding Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
-                 Template="{StaticResource TextBoxBaseControlTemplate}"/>
+            <TextBlock Grid.Row="1" Grid.Column="0" Text="Description:" Margin="0 4 12 0"/>
+            <TextBox Name="inputDescription" Grid.Row="1" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Product.Description, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
             
-            <CheckBox Grid.Row="2" Grid.ColumnSpan="2" Margin="0 8 0 24" Height="25" IsChecked="{Binding Archived, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">Archived</CheckBox>
+            <TextBlock Grid.Row="2" Grid.Column="0" Text="Type:" Margin="0 4 12 0"/>
+            <TextBox Name="inputType" Grid.Row="2" Grid.Column="1" Width="128" Margin="0 0 0 12" Text="{Binding Product.Type, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                    Template="{StaticResource TextBoxBaseControlTemplate}" Background="LightGray"/>
 
-            <Button Content="CONFIRM" Grid.Row="3" Grid.ColumnSpan="2" Width="140" Click="Button_Click">
-                <Button.Style>
-                    <Style TargetType="Button">
-                        <Setter Property="Cursor" Value="Hand"/>
-                        <Setter Property="Background" Value="{StaticResource BlackColorBrush}"/>
-                        <Setter Property="Foreground" Value="{StaticResource WhiteColorBruh}"/>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="{StaticResource PrimaryColorBrush}"/>
-                                <Setter Property="Foreground" Value="{StaticResource BlackColorBrush}"/>
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </Button.Style>
+            <TextBlock Grid.Row="3" Grid.Column="0" Text="Price:" Margin="0 4 12 0"/>
+            <TextBox Name="inputPrice" Grid.Row="3" Grid.Column="1" Margin="0 0 0 12" PreviewTextInput="NumberValidationTextBox" Width="128" Text="{Binding Product.Price, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" 
+                 Template="{StaticResource TextBoxBaseControlTemplate}"/>
 
-                <Button.Template>
-                    <ControlTemplate TargetType="Button">
-                        <Border Width="Auto" Height="36" CornerRadius="12" Background="{TemplateBinding Background}">
-                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
-                        </Border>
-                    </ControlTemplate>
-                </Button.Template>
-            </Button>
+            <TextBlock Name="errorString" Grid.Row="4" Grid.ColumnSpan="2" FontSize="11" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Red"/>
+
+            <Button Style="{StaticResource ButtonStyle}" Margin="0 24 0 0" Height="32" Content="CONFIRM" Grid.Row="5" Grid.ColumnSpan="2" Width="192" Click="Button_Click"/>
         </Grid>
     </Grid>
 </Window>
