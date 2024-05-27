@@ -23,23 +23,23 @@
         </StackPanel>
 
         <StackPanel Grid.ColumnSpan="2" Margin="0 30 0 0" Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <TextBlock FontSize="24" FontWeight="Bold" TextAlignment="Center" FontFamily="Roboto" Text="ACCUEIL"></TextBlock>
+            <TextBlock FontSize="24" FontWeight="Bold" TextAlignment="Center" FontFamily="Roboto" Text="Home"></TextBlock>
         </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToOrder" Content="COMMANDES" Click="Navigate_To_Order" FontWeight="Bold"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToOrder" Content="Order" Click="Navigate_To_Order" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToProduct" Content="PRODUITS" Click="Navigate_To_Product" FontWeight="Bold" />
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToProduct" Content="Products" Click="Navigate_To_Product" FontWeight="Bold" />
         </StackPanel>
 
         <StackPanel Grid.Row="2" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToIngredient" Content="INGREDIENTS" Click="Navigate_To_Ingredient" FontWeight="Bold"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToIngredient" Content="Ingredients" Click="Navigate_To_Ingredient" FontWeight="Bold"/>
         </StackPanel>
 
         <StackPanel Grid.Row="2" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToRecipe" Content="RECETTES" Click="Navigate_To_Recipe" FontWeight="Bold"/>
+            <Button Style="{StaticResource ButtonStyle}" x:Name="navigateToRecipe" Content="Recipes" Click="Navigate_To_Recipe" FontWeight="Bold"/>
         </StackPanel>
     </Grid>
 </Page>

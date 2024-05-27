@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace BreadyToomy.Enums
 {
-    internal class ProductType
+    public enum ProductTypes
     {
+        MEAL,
+        DESSERT,
+        DRINK,
+        MENU
     }
 }

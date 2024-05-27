@@ -17,11 +17,5 @@ namespace BreadyToomy
         {
             mainFrame.NavigationService.Navigate(new Views.HomeView());
         }
-
-        private void Window_Closed(object sender, System.EventArgs e)
-        {
-            Database database = Database.GetInstance();
-            database.close();
-        }
     }
 }

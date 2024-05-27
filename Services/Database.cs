@@ -11,7 +11,6 @@ namespace BreadyToomys.Services
         private Database()
         {
             connection = new NpgsqlConnection(connectionString);
-            connection.Open();
         }
 
         private static Database instance;
@@ -29,6 +28,7 @@ namespace BreadyToomys.Services
 
         public NpgsqlCommand query(string query)
         {
+            connection.Open();
             NpgsqlCommand command = new NpgsqlCommand(query, connection);
             return command;
         }
@@ -36,7 +36,6 @@ namespace BreadyToomys.Services
         public NpgsqlCommand queryWithValues(string query, object[] values)
         {
             connection.Open();
-
             NpgsqlCommand command = new NpgsqlCommand(query, connection);
 
             for (int i = 0; i < values.Length; i++)

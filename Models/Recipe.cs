@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using BreadyToomy.Enums;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
@@ -7,7 +8,7 @@ namespace BreadyToomy.Models
     public class Recipe : INotifyPropertyChanged
     {
 		private int _id;
-		private string _difficulty;
+		private RecipeDifficulties _difficulty;
 		private int _cookTime;
 		private bool _archived;
         private List<RecipeStep> _steps;
@@ -23,7 +24,7 @@ namespace BreadyToomy.Models
             }
         }
 
-        public string Difficulty
+        public RecipeDifficulties Difficulty
         {
             get => _difficulty;
             set
